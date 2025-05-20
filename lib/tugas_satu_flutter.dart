@@ -14,21 +14,20 @@ class TugasSatuFlutter extends StatelessWidget {
         foregroundColor: Colors.white,
       ),
       body: Column(
-        mainAxisAlignment:
-            MainAxisAlignment.start, // Vertically centers content
+        mainAxisAlignment: MainAxisAlignment.start, // Membuat konten vertikal
         children: [
           Padding(
             padding: EdgeInsets.all(16),
             child: Row(
               mainAxisAlignment:
                   MainAxisAlignment
-                      .center, // Optional: horizontally center the row
+                      .center, // Membuat Row menjadi center horizontal
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
                   radius: 30,
-                  child: Icon(Icons.person, color: Colors.white, size: 40),
                   backgroundColor: Colors.black,
+                  child: Icon(Icons.person, color: Colors.white, size: 40),
                 ),
                 SizedBox(width: 16),
                 Column(
@@ -44,11 +43,8 @@ class TugasSatuFlutter extends StatelessWidget {
                     SizedBox(height: 4),
                     Row(
                       children: [
-                        Icon(Icons.location_on),
-                        Text(
-                          'Jakarta',
-                          style: TextStyle(color: Colors.grey[600]),
-                        ),
+                        Icon(Icons.location_on, color: Colors.blue),
+                        Text('Jakarta', style: TextStyle(color: Colors.blue)),
                       ],
                     ),
                   ],

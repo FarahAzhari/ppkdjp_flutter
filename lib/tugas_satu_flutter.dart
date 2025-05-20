@@ -13,40 +13,6 @@ class TugasSatuFlutter extends StatelessWidget {
         centerTitle: true,
         foregroundColor: Colors.white,
       ),
-      // body: Column(
-      //   mainAxisAlignment: MainAxisAlignment.start,
-      //   children: [
-      //     Row(
-      //       mainAxisAlignment: MainAxisAlignment.start,
-      //       children: [
-      //         Text('Nama: Farah Azhari', style: TextStyle(fontSize: 25)),
-      //       ],
-      //     ),
-      //     Row(
-      //       mainAxisAlignment: MainAxisAlignment.start,
-      //       children: [
-      //         Icon(Icons.location_on, color: Colors.blue),
-      //         Text(
-      //           'Jakarta',
-      //           style: TextStyle(fontSize: 22, color: Colors.blue),
-      //         ),
-      //       ],
-      //     ),
-      //     Row(
-      //       mainAxisAlignment: MainAxisAlignment.start,
-      //       children: [
-      //         Text(
-      //           'I am a Flutter student.',
-      //           style: TextStyle(
-      //             fontSize: 18,
-      //             fontStyle: FontStyle.italic,
-      //             decoration: TextDecoration.underline,
-      //           ),
-      //         ),
-      //       ],
-      //     ),
-      //   ],
-      // ),
       body: Column(
         mainAxisAlignment:
             MainAxisAlignment.start, // Vertically centers content

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ppkdjp_flutter/meet_dua.dart';
+import 'package:ppkdjp_flutter/meet_dua_a.dart';
+import 'package:ppkdjp_flutter/tugas_dua_flutter.dart';
 // import 'package:ppkdjp_flutter/meet_dua.dart';
 import 'package:ppkdjp_flutter/tugas_satu_flutter.dart';
 // import 'package:ppkdjp_flutter/meet_satu.dart';
@@ -35,7 +38,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const TugasSatuFlutter(),
+      home: const TugasDuaFlutter(),
     );
   }
 }

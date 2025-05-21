@@ -12,6 +12,8 @@ class TugasDuaFlutter extends StatelessWidget {
           padding: const EdgeInsets.only(left: 35),
           child: Icon(Icons.arrow_back_ios, size: 18),
         ),
+
+        ///APPBAR
         title: Text('Profile Lengkap', style: TextStyle(fontSize: 18)),
         centerTitle: true,
         backgroundColor: Color(0xffedeffb),
@@ -20,9 +22,9 @@ class TugasDuaFlutter extends StatelessWidget {
             icon: Padding(
               padding: const EdgeInsets.only(right: 35),
               child: Icon(Icons.more_vert),
-            ), // Two-dot list is uncommon, this is typically three dots
+            ),
             onPressed: () {
-              // You can implement your action or open a menu here
+              // Implement your action or open a menu here
               showMenu(
                 context: context,
                 position: RelativeRect.fromLTRB(1000, 80, 0, 0),
@@ -38,8 +40,17 @@ class TugasDuaFlutter extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(height: 20),
-          Center(child: CircleAvatar(radius: 50)),
+          Center(
+            child: CircleAvatar(
+              radius: 50,
+              backgroundImage: AssetImage(
+                'assets/images/cat.png', // Replace with actual profile image URL
+              ),
+            ),
+          ),
           SizedBox(height: 20),
+
+          ///BARIS 1
           Center(
             child: Text(
               'Farah Azhari',
@@ -49,6 +60,7 @@ class TugasDuaFlutter extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 5),
             child: Container(
+              ///BARIS 2
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -59,18 +71,22 @@ class TugasDuaFlutter extends StatelessWidget {
               ),
             ),
           ),
+
+          ///BARIS 3
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Spacer(),
                 Icon(Icons.call, size: 18, color: Colors.green),
-                // SizedBox(width: 8),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 100),
-                  child: Spacer(),
+                  padding: const EdgeInsets.only(right: 35),
+                  child: Text(
+                    '+628123456789',
+                    style: TextStyle(color: Colors.green),
+                  ),
                 ),
-                Text('+628123456789', style: TextStyle(color: Colors.green)),
               ],
             ),
           ),
@@ -128,6 +144,19 @@ class TugasDuaFlutter extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
+
+          /// BARIS 5
+          SizedBox(
+            height: 50,
+            width: 380,
+            child: Padding(
+              padding: EdgeInsets.only(left: 35, right: 35),
+              child: Text(
+                'Professional napper, snack thief, and expert at ignoring you when you need me most.',
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
           Container(
             height: 50,
             width: 380,
@@ -137,27 +166,35 @@ class TugasDuaFlutter extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
+
+              ///BARIS 4
               child: Row(
                 children: [
                   Expanded(
                     child: Container(
+                      padding: EdgeInsets.only(right: 5),
                       height: 40,
                       decoration: BoxDecoration(
                         color: Colors.grey[200],
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
-                      child: Center(child: Text('Posts')),
+                      child: Center(
+                        child: Text('Posts', style: TextStyle(fontSize: 18)),
+                      ),
                     ),
                   ),
                   SizedBox(width: 8),
                   Expanded(
                     child: Container(
+                      padding: EdgeInsets.only(right: 5),
                       height: 40,
                       decoration: BoxDecoration(
-                        color: Colors.green,
+                        // color: Colors.green,
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                       ),
-                      child: Center(child: Text('Likes')),
+                      child: Center(
+                        child: Text('Likes', style: TextStyle(fontSize: 18)),
+                      ),
                     ),
                   ),
                 ],
@@ -165,11 +202,12 @@ class TugasDuaFlutter extends StatelessWidget {
             ),
           ),
           SizedBox(height: 20),
+
+          //Posts
           Container(
             padding: EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: Colors.white, // Background color of the tweet
-              borderRadius: BorderRadius.circular(16), // Rounded corners
+              color: Colors.white, // Background color of the posts
             ),
             child: Row(
               crossAxisAlignment:
@@ -179,18 +217,18 @@ class TugasDuaFlutter extends StatelessWidget {
                 // Profile Photo
                 CircleAvatar(
                   radius: 24,
-                  backgroundImage: NetworkImage(
-                    'https://via.placeholder.com/150', // Replace with actual profile image URL
+                  backgroundImage: AssetImage(
+                    'assets/images/cat2.png', // Replace with actual profile image URL
                   ),
                 ),
                 SizedBox(width: 12), // Space between image and text
-                // Name and Tweet Column
+                // Name and Posts Column
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Display Name',
+                        '#RepostedFrom Princess',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -198,7 +236,130 @@ class TugasDuaFlutter extends StatelessWidget {
                       ),
                       SizedBox(height: 4),
                       Text(
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                        'Well, I look beautiful indeed.',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white, // Background color of the posts
+            ),
+            child: Row(
+              crossAxisAlignment:
+                  CrossAxisAlignment
+                      .start, // Align top of image with top of text
+              children: [
+                // Profile Photo
+                CircleAvatar(
+                  radius: 24,
+                  backgroundImage: AssetImage(
+                    'assets/images/dog1.png', // Replace with actual profile image URL
+                  ),
+                ),
+                SizedBox(width: 12), // Space between image and text
+                // Name and Posts Column
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '#RepostedFrom Barkley McSnuggles',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        "Zoomies at 3 AM: because I'm a good boy. Also, I ate the couch. 🐾 But I'm still a good boy, right?",
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white, // Background color of the posts
+            ),
+            child: Row(
+              crossAxisAlignment:
+                  CrossAxisAlignment
+                      .start, // Align top of image with top of text
+              children: [
+                // Profile Photo
+                CircleAvatar(
+                  radius: 24,
+                  backgroundImage: AssetImage(
+                    'assets/images/capybara1.png', // Replace with actual profile image URL
+                  ),
+                ),
+                SizedBox(width: 12), // Space between image and text
+                // Name and Posts Column
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Chillberto McSnore',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        "Just chillin' by the pond... someone throw me a snack or at least some good vibes.#ZEN",
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white, // Background color of the posts
+            ),
+            child: Row(
+              crossAxisAlignment:
+                  CrossAxisAlignment
+                      .start, // Align top of image with top of text
+              children: [
+                // Profile Photo
+                CircleAvatar(
+                  radius: 24,
+                  backgroundImage: AssetImage(
+                    'assets/images/cat3.jpg', // Replace with actual profile image URL
+                  ),
+                ),
+                SizedBox(width: 12), // Space between image and text
+                // Name and Posts Column
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '#RepostedFrom Sir Mc-Claw',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      SizedBox(height: 4),
+                      Text(
+                        "Slept on the keyboard again. Now there's a gggggggg in my search history. I’m basically a genius",
                         style: TextStyle(fontSize: 14),
                       ),
                     ],
@@ -208,6 +369,24 @@ class TugasDuaFlutter extends StatelessWidget {
             ),
           ),
         ],
+      ),
+
+      ///BARIS 6
+      bottomNavigationBar: Container(
+        height: 50,
+        color: Color(0xff71bdb8), // Background color of the navbar
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Icon(Icons.home, color: Colors.white, size: 24), // Home icon
+            Icon(Icons.search, color: Colors.white, size: 24), // Search icon
+            Icon(
+              Icons.account_circle,
+              color: Colors.white,
+              size: 24,
+            ), // Profile icon
+          ],
+        ),
       ),
     );
   }

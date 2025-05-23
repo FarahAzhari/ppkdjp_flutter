@@ -116,6 +116,7 @@ class TugasTigaFlutter extends StatelessWidget {
             Text('How are you feeling today?'),
             GridView.count(
               shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
               crossAxisCount: 3,
               crossAxisSpacing: 12, // horizontal space between items
               mainAxisSpacing: 12, // vertical space between items

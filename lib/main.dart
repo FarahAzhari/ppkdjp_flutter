@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:ppkdjp_flutter/meet_tujuh/tugas_tujuh_flutter.dart';
 // import 'package:ppkdjp_flutter/meet_dua.dart';
 // import 'package:ppkdjp_flutter/meet_dua_a.dart';
@@ -8,7 +9,9 @@ import 'package:ppkdjp_flutter/meet_tujuh/tugas_tujuh_flutter.dart';
 // import 'package:ppkdjp_flutter/meet_satu.dart';
 // import 'package:ppkdjp_flutter/my_home_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('id_ID', null);
   runApp(const MyApp());
 }
 

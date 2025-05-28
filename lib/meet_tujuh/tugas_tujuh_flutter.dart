@@ -86,10 +86,7 @@ class _TugasTujuhFlutterState extends State<TugasTujuhFlutter> {
         iconTheme: IconThemeData(
           color: _isDarkMode ? Colors.white : Colors.black,
         ),
-        title: Text(
-          "Form Tugas 7",
-          style: TextStyle(color: _isDarkMode ? Colors.white : Colors.black),
-        ),
+        title: Text("Form Tugas 7", style: darkMode()),
       ),
       drawer: _buildDrawer(),
       body: Column(
@@ -194,9 +191,7 @@ class _TugasTujuhFlutterState extends State<TugasTujuhFlutter> {
               activeColor: AppColor.army1,
               title: Text(
                 "Saya menyetujui semua persyaratan yang berlaku",
-                style: TextStyle(
-                  color: _isDarkMode ? Colors.white : Colors.black,
-                ),
+                style: darkMode(),
               ),
               value: _isChecked,
               onChanged: (value) {
@@ -214,9 +209,7 @@ class _TugasTujuhFlutterState extends State<TugasTujuhFlutter> {
                     _isChecked
                         ? "Lanjutkan pendaftaran diperbolehkan"
                         : "Anda belum bisa melanjutkan",
-                    style: TextStyle(
-                      color: _isDarkMode ? Colors.white : Colors.black,
-                    ),
+                    style: darkMode(),
                   ),
                 ),
               ],
@@ -232,12 +225,7 @@ class _TugasTujuhFlutterState extends State<TugasTujuhFlutter> {
               inactiveTrackColor: Colors.white,
               activeColor: Colors.white,
               activeTrackColor: AppColor.army1,
-              title: Text(
-                "Aktifkan Mode Gelap",
-                style: TextStyle(
-                  color: _isDarkMode ? Colors.white : Colors.black,
-                ),
-              ),
+              title: Text("Aktifkan Mode Gelap", style: darkMode()),
               value: _isDarkMode,
               onChanged: (value) {
                 setState(() {
@@ -252,9 +240,7 @@ class _TugasTujuhFlutterState extends State<TugasTujuhFlutter> {
                   padding: const EdgeInsets.only(left: 15.0),
                   child: Text(
                     _isDarkMode ? "Mode Gelap Aktif" : "Mode Terang Aktif",
-                    style: TextStyle(
-                      color: _isDarkMode ? Colors.white : Colors.black,
-                    ),
+                    style: darkMode(),
                   ),
                 ),
               ],
@@ -271,16 +257,9 @@ class _TugasTujuhFlutterState extends State<TugasTujuhFlutter> {
                   padding: const EdgeInsets.only(left: 15.0),
                   child: DropdownButton<String>(
                     dropdownColor: AppColor.army1,
-                    style: TextStyle(
-                      color: _isDarkMode ? Colors.white : Colors.black,
-                    ),
+                    style: darkMode(),
                     focusColor: AppColor.army1,
-                    hint: Text(
-                      "Pilih Kategori",
-                      style: TextStyle(
-                        color: _isDarkMode ? Colors.white : Colors.black,
-                      ),
-                    ),
+                    hint: Text("Pilih Kategori", style: darkMode()),
                     value: _selectedCategory,
                     items:
                         ["Elektronik", "Pakaian", "Makanan", "Lainnya"]
@@ -306,9 +285,7 @@ class _TugasTujuhFlutterState extends State<TugasTujuhFlutter> {
                     padding: const EdgeInsets.only(left: 15.0),
                     child: Text(
                       "Anda memilih kategori: $_selectedCategory",
-                      style: TextStyle(
-                        color: _isDarkMode ? Colors.white : Colors.black,
-                      ),
+                      style: darkMode(),
                     ),
                   ),
                 ],
@@ -334,9 +311,7 @@ class _TugasTujuhFlutterState extends State<TugasTujuhFlutter> {
             if (_selectedDate != null)
               Text(
                 "Tanggal Lahir: ${_formatDate(_selectedDate!)}",
-                style: TextStyle(
-                  color: _isDarkMode ? Colors.white : Colors.black,
-                ),
+                style: darkMode(),
               ),
           ],
         );
@@ -356,15 +331,18 @@ class _TugasTujuhFlutterState extends State<TugasTujuhFlutter> {
             if (_selectedTime != null)
               Text(
                 "Pengingat diatur pukul: ${_formatTime(_selectedTime!)}",
-                style: TextStyle(
-                  color: _isDarkMode ? Colors.white : Colors.black,
-                ),
+                style: darkMode(),
               ),
           ],
         );
       default:
         return Text("Pilih menu dari drawer.");
     }
+  }
+
+  // Method to apply dark mode
+  TextStyle darkMode() {
+    return TextStyle(color: _isDarkMode ? Colors.white : Colors.black);
   }
 
   // Async Function to show DatePicker

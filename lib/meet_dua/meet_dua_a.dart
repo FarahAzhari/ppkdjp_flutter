@@ -18,7 +18,7 @@ class MeetDuaA extends StatelessWidget {
             Text('Mobile Programming'),
             Spacer(),
             Text('Mobile Programming'),
-            Container(width: 50, height: 50),
+            SizedBox(width: 50, height: 50),
           ],
         ),
       ),

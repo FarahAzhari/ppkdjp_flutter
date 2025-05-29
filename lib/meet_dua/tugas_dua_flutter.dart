@@ -59,16 +59,13 @@ class TugasDuaFlutter extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 5),
-            child: Container(
-              ///BARIS 2
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.email, size: 18, color: Colors.blueAccent),
-                  SizedBox(width: 8),
-                  Text('farah@mail.com', style: TextStyle(color: Colors.blue)),
-                ],
-              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.email, size: 18, color: Colors.blueAccent),
+                SizedBox(width: 8),
+                Text('farah@mail.com', style: TextStyle(color: Colors.blue)),
+              ],
             ),
           ),
 

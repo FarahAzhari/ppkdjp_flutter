@@ -79,7 +79,6 @@ class _MeetLimaState extends State<MeetLima> {
             setState(() {
               tampilkanLoading = !tampilkanLoading;
             });
-            print('Tampilkan Loading');
           },
           child: Text('Tampilkan Loading'),
         ),
@@ -93,11 +92,9 @@ class _MeetLimaState extends State<MeetLima> {
         nilaiWidget(),
         IconButton(
           onPressed: () {
-            print('Saya tekan disini');
             setState(() {
               nilaiTambah--;
             });
-            print(nilaiTambah);
           },
           icon: Icon(Icons.minimize),
         ),
@@ -114,11 +111,9 @@ class _MeetLimaState extends State<MeetLima> {
             Expanded(
               child: ElevatedButton(
                 onPressed: () {
-                  print('Saya tekan disini');
                   setState(() {
                     nilaiTambah++;
                   });
-                  print(nilaiTambah);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.greenAccent,

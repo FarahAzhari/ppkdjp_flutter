@@ -181,6 +181,14 @@ class _ModelWidgetState extends State<ModelWidget> {
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
+                            Text(
+                              product.productDescription ?? '-',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey[500],
+                                fontWeight: FontWeight.w100,
+                              ),
+                            ),
                           ],
                         ),
                       ),

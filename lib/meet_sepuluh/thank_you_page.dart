@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:ppkdjp_flutter/constant/app_style.dart';
 
-class ThankYouPage extends StatelessWidget {
+class ThankYouPage extends StatefulWidget {
   const ThankYouPage({super.key, required this.name, required this.domicile});
   final String name;
   final String domicile;
+  static const String id = "/thank_you_page";
 
+  @override
+  State<ThankYouPage> createState() => _ThankYouPageState();
+}
+
+class _ThankYouPageState extends State<ThankYouPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +57,7 @@ class ThankYouPage extends StatelessWidget {
                   ),
                   SizedBox(height: 12),
                   Text(
-                    "$name from $domicile",
+                    "${widget.name} from ${widget.domicile}",
                     style: AppStyle.fontBold().copyWith(
                       fontSize: 26,
                       color: Colors.green.shade800,

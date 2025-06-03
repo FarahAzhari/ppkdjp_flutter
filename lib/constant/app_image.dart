@@ -5,10 +5,8 @@ class AppImage {
   // Profile
   static const String photoProfile = "$asset/gambar.png";
 
-  // Buah-buahan
-  static const String apple = "$asset/apel.jpeg";
-  static const String anggur = "$asset/anggur.jpeg";
-  static const String pisang = "$asset/pisang.jpeg";
+  // Cat
+  static const String cat = "$asset/cat.png";
 
   // Minuman (Beverages)
   static const String tehBotol = "$asset/teh_botol.png";

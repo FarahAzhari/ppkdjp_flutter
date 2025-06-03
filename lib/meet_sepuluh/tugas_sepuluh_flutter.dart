@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ppkdjp_flutter/helper/preference.dart';
 import 'package:ppkdjp_flutter/meet_sepuluh/thank_you_page.dart';
 
 class TugasSepuluhFlutter extends StatefulWidget {
   const TugasSepuluhFlutter({super.key});
+  // static const String id = "/tugas_sepuluh_flutter";
 
   @override
   State<TugasSepuluhFlutter> createState() => _TugasSepuluhFlutterState();
@@ -331,6 +333,7 @@ class _TugasSepuluhFlutterState extends State<TugasSepuluhFlutter> {
             ),
             ElevatedButton(
               onPressed: () {
+                PreferenceHandler.saveLogin(true);
                 Navigator.push(
                   context,
                   MaterialPageRoute(

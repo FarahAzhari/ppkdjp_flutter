@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:ppkdjp_flutter/meet_sembilan/tugas_sembilan/tugas_sembilan_flutter.dart';
+import 'package:ppkdjp_flutter/meet_sepuluh/tugas_sepuluh_flutter.dart';
 // import 'package:ppkdjp_flutter/meet_dua.dart';
 // import 'package:ppkdjp_flutter/meet_dua_a.dart';
 // import 'package:ppkdjp_flutter/tugas_dua_flutter.dart';
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: TugasSembilanFlutter(),
+      home: TugasSepuluhFlutter(),
     );
   }
 }

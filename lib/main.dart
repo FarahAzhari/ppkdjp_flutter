@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:ppkdjp_flutter/meet_16/login_screen.dart';
+import 'package:ppkdjp_flutter/meet_16/register_screen.dart';
 import 'package:ppkdjp_flutter/meet_sepuluh/thank_you_page.dart';
-import 'package:ppkdjp_flutter/meet_sepuluh/tugas_sepuluh_flutter.dart';
 import 'package:ppkdjp_flutter/splash_screen.dart';
 // import 'package:ppkdjp_flutter/meet_dua.dart';
 // import 'package:ppkdjp_flutter/meet_dua_a.dart';
@@ -27,9 +28,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => SplashScreen(),
-        '/login': (context) => TugasSepuluhFlutter(),
-
+        '/login': (context) => LoginScreenApp(),
         ThankYouPage.id: (context) => ThankYouPage(name: '', domicile: ''),
+        LoginScreenApp.id: (context) => LoginScreenApp(),
+        RegisterScreenApp.id: (context) => RegisterScreenApp(),
       },
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,

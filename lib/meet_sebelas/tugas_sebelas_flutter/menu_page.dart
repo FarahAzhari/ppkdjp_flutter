@@ -82,7 +82,7 @@ class _MenuPageState extends State<MenuPage> {
                         child: Text('Deskripsi: -'),
                       ),
                   const SizedBox(height: 4),
-                  Text("Harga: Rp ${item.price.toStringAsFixed(0)}"),
+                  Text("Harga: Rp${item.price.toStringAsFixed(0)}"),
                   item.category != null && item.category!.isNotEmpty
                       ? Text("Kategori: ${item.category}")
                       : Text("Kategori: -"),
@@ -95,6 +95,70 @@ class _MenuPageState extends State<MenuPage> {
                   ),
                 ],
               ),
+            ),
+            Column(
+              children: [
+                // Edit Button
+                IconButton(
+                  icon: const Icon(Icons.edit, color: Colors.orange),
+                  onPressed: () async {
+                    final result = await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder:
+                            (_) => AddMenuPage(
+                              isEdit: true,
+                              menuItem: item, // Pass the menu item for editing
+                            ),
+                      ),
+                    );
+                    if (result == true) {
+                      loadMenuItems(); // Refresh if item was edited
+                    }
+                  },
+                ),
+                // Delete Button
+                IconButton(
+                  icon: const Icon(Icons.delete, color: Colors.red),
+                  onPressed: () async {
+                    bool shouldDelete = await showDialog(
+                      context: context,
+                      builder:
+                          (context) => AlertDialog(
+                            backgroundColor: Colors.white,
+                            title: const Text('Konfirmasi Hapus'),
+                            content: const Text(
+                              'Apakah Anda yakin ingin menghapus menu ini?',
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, false),
+                                child: const Text(
+                                  'Batal',
+                                  style: TextStyle(
+                                    color: Colors.deepOrangeAccent,
+                                  ),
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, true),
+                                child: const Text(
+                                  'Hapus',
+                                  style: TextStyle(
+                                    color: Colors.deepOrangeAccent,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                    );
+                    if (shouldDelete) {
+                      await DbHelperMenu.deleteMenu(item.id!);
+                      loadMenuItems(); // Refresh after delete
+                    }
+                  },
+                ),
+              ],
             ),
           ],
         ),

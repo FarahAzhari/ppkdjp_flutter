@@ -46,19 +46,20 @@ class DbHelperMenu {
   }
 
   // Update Menu Item
-  // static Future<void> updateMenu(MenuModel data) async {
-  //   final db = await initDB();
-  //   await db.update(
-  //     'menu',
-  //     data.toMap(),
-  //     where: 'id = ?',
-  //     whereArgs: [data.id],
-  //   );
-  // }
+  // Update Menu Item
+  static Future<void> updateMenu(MenuModel data) async {
+    final db = await initDB();
+    await db.update(
+      'menu',
+      data.toMap(),
+      where: 'id = ?',
+      whereArgs: [data.id],
+    );
+  }
 
   // // Delete Menu Item
-  // static Future<void> deleteMenu(int id) async {
-  //   final db = await initDB();
-  //   await db.delete('menu', where: 'id = ?', whereArgs: [id]);
-  // }
+  static Future<void> deleteMenu(int id) async {
+    final db = await initDB();
+    await db.delete('menu', where: 'id = ?', whereArgs: [id]);
+  }
 }

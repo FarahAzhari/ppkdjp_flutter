@@ -23,6 +23,13 @@ class AppImage {
   static const String mizone = "$asset/mizone.png";
   static const String leMinerale = "$asset/le_minerale.png";
 
-  // Lottie files
+  // HARRY POTTER IMAGES
   static const String loading = "$lottie/golden_snitch_loading.json";
+  static const String wand = "$asset/wand.png";
+  static const String wandCursor = "$asset/wand_cursor.png";
+  static const String hogwarts = "$asset/hogwarts_crest.png";
+  static const String gryffindor = "$asset/gryffindor_crest.png";
+  static const String slytherin = "$asset/slytherin_crest.png";
+  static const String hufflepuff = "$asset/hufflepuff_crest.png";
+  static const String ravenclaw = "$asset/ravenclaw_crest.png";
 }

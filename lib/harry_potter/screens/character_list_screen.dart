@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:ppkdjp_flutter/constant/app_image.dart';
-import 'package:ppkdjp_flutter/harry_potter/api/get_character.dart';
+import 'package:ppkdjp_flutter/harry_potter/api/hp_api.dart';
 import 'package:ppkdjp_flutter/harry_potter/models/character_model.dart';
 
-class CharacterListView extends StatelessWidget {
-  const CharacterListView({super.key});
+class CharacterListScreen extends StatelessWidget {
+  const CharacterListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

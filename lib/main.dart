@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:ppkdjp_flutter/meet_16/login_screen.dart';
-import 'package:ppkdjp_flutter/meet_16/register_screen.dart';
-import 'package:ppkdjp_flutter/meet_22/views/user_list_screen.dart';
-import 'package:ppkdjp_flutter/meet_sepuluh/thank_you_page.dart';
+import 'package:ppkdjp_flutter/harry_potter/views/character_list_view.dart';
 // import 'package:ppkdjp_flutter/meet_dua.dart';
 // import 'package:ppkdjp_flutter/meet_dua_a.dart';
 // import 'package:ppkdjp_flutter/tugas_dua_flutter.dart';
@@ -30,12 +27,12 @@ class MyApp extends StatelessWidget {
         // '/': (context) => SplashScreen(),
         // '/': (context) => SiswaScreen(),
         // '/': (context) => MenuPage(),
-        '/': (context) => UserListScreen(),
-
-        '/login': (context) => LoginScreenApp(),
-        ThankYouPage.id: (context) => ThankYouPage(name: '', domicile: ''),
-        LoginScreenApp.id: (context) => LoginScreenApp(),
-        RegisterScreenApp.id: (context) => RegisterScreenApp(),
+        // '/': (context) => UserListScreen(),
+        // '/login': (context) => LoginScreenApp(),
+        // ThankYouPage.id: (context) => ThankYouPage(name: '', domicile: ''),
+        // LoginScreenApp.id: (context) => LoginScreenApp(),
+        // RegisterScreenApp.id: (context) => RegisterScreenApp(),
+        '/': (context) => CharacterListView(),
       },
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,

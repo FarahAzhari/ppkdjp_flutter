@@ -1,5 +1,8 @@
 class AppImage {
   static const asset = "assets/images";
+  static const lottie = "assets/lottie";
+
+  // Placeholder
   static const String placeholder = "$asset/placeholder.png";
 
   // Profile
@@ -19,4 +22,7 @@ class AppImage {
   static const String youC1000 = "$asset/you_c1000.png";
   static const String mizone = "$asset/mizone.png";
   static const String leMinerale = "$asset/le_minerale.png";
+
+  // Lottie files
+  static const String loading = "$lottie/golden_snitch_loading.json";
 }

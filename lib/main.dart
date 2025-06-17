@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:ppkdjp_flutter/meet_16/login_screen.dart';
 import 'package:ppkdjp_flutter/meet_16/register_screen.dart';
-import 'package:ppkdjp_flutter/meet_sebelas/tugas_sebelas_flutter/menu_page.dart';
+import 'package:ppkdjp_flutter/meet_22/views/user_list_screen.dart';
 import 'package:ppkdjp_flutter/meet_sepuluh/thank_you_page.dart';
 // import 'package:ppkdjp_flutter/meet_dua.dart';
 // import 'package:ppkdjp_flutter/meet_dua_a.dart';
@@ -29,7 +29,8 @@ class MyApp extends StatelessWidget {
       routes: {
         // '/': (context) => SplashScreen(),
         // '/': (context) => SiswaScreen(),
-        '/': (context) => MenuPage(),
+        // '/': (context) => MenuPage(),
+        '/': (context) => UserListScreen(),
 
         '/login': (context) => LoginScreenApp(),
         ThankYouPage.id: (context) => ThankYouPage(name: '', domicile: ''),

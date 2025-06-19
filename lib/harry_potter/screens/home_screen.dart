@@ -1,228 +1,131 @@
-// lib/screens/home_screen.dart
 import 'package:flutter/material.dart';
-import 'package:ppkdjp_flutter/harry_potter/models/character_model.dart'; // Import your CharacterModel
-import 'package:ppkdjp_flutter/harry_potter/api/hp_api.dart' as api_service;
-import 'package:ppkdjp_flutter/harry_potter/screens/house_selection_screen.dart'; // Import your API service
-
-// Placeholder screens for navigation (create these files later)
-class CharactersScreen extends StatelessWidget {
-  final HogwartsHouse selectedHouse;
-  const CharactersScreen({required this.selectedHouse, Key? key})
-    : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('${selectedHouse.toString().split('.').last} Characters'),
-      ),
-      body: Center(
-        child: FutureBuilder<List<CharacterModel>>(
-          future: api_service.getCharactersByHouse(
-            selectedHouse.toString().split('.').last,
-          ),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const CircularProgressIndicator();
-            } else if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}');
-            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return Text(
-                'No characters found for ${selectedHouse.toString().split('.').last}.',
-              );
-            } else {
-              return ListView.builder(
-                itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) {
-                  final character = snapshot.data![index];
-                  return Card(
-                    margin: const EdgeInsets.all(8.0),
-                    child: ListTile(
-                      leading:
-                          character.image.isNotEmpty
-                              ? CircleAvatar(
-                                backgroundImage: NetworkImage(character.image),
-                              )
-                              : null,
-                      title: Text(character.name),
-                      subtitle: Text(
-                        '${character.house.toString().split('.').last} | ${character.species}',
-                      ),
-                    ),
-                  );
-                },
-              );
-            }
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class SpellsScreen extends StatelessWidget {
-  const SpellsScreen({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Spells')),
-    body: const Center(child: Text('Spells Content Here')),
-  );
-}
-
-class WandsScreen extends StatelessWidget {
-  const WandsScreen({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Wands')),
-    body: const Center(child: Text('Wands Content Here')),
-  );
-}
-
-class PlacesScreen extends StatelessWidget {
-  const PlacesScreen({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Places')),
-    body: const Center(child: Text('Places Content Here')),
-  );
-}
-
-class LettersScreen extends StatelessWidget {
-  const LettersScreen({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Letters')),
-    body: const Center(child: const Text('Letters Content Here')),
-  );
-}
-
-class SendLetterScreen extends StatelessWidget {
-  const SendLetterScreen({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Send Letter')),
-    body: const Center(child: Text('Send Letter Content Here')),
-  );
-}
-
-// Add more placeholder screens for "Series" and "Symbols" if needed.
-class SeriesScreen extends StatelessWidget {
-  const SeriesScreen({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Watch Series')),
-    body: const Center(child: Text('Series Content Here')),
-  );
-}
-
-class SymbolsScreen extends StatelessWidget {
-  const SymbolsScreen({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Symbols')),
-    body: const Center(child: Text('Symbols Content Here')),
-  );
-}
+import 'package:ppkdjp_flutter/constant/app_image.dart';
+import 'package:ppkdjp_flutter/harry_potter/screens/characters_screen.dart';
+import 'package:ppkdjp_flutter/harry_potter/screens/house_selection_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final HogwartsHouse selectedHouse;
 
-  const HomeScreen({this.selectedHouse = HogwartsHouse.none, Key? key})
-    : super(key: key);
+  const HomeScreen({this.selectedHouse = HogwartsHouse.none, super.key});
 
-  // Helper method to get the background image based on the selected house
   String _getBackgroundImage(HogwartsHouse house) {
     switch (house) {
       case HogwartsHouse.gryffindor:
-        return 'assets/images/gryffindor_bg.jpg';
+        return AppImage.gryffindorBg;
       case HogwartsHouse.slytherin:
-        return 'assets/images/slytherin_bg.jpg';
+        return AppImage.slytherinBg;
       case HogwartsHouse.ravenclaw:
-        return 'assets/images/ravenclaw_bg.jpg';
+        return AppImage.ravenclawBg;
       case HogwartsHouse.hufflepuff:
-        return 'assets/images/hufflepuff_bg.jpg';
+        return AppImage.hufflepuffBg;
       case HogwartsHouse.none:
       default:
-        return 'assets/images/hogwarts_bg.jpg';
+        return AppImage.hogwarts; // Your specified default
     }
   }
 
-  // Helper method to get the main crest image based on the selected house
-  String _getMainCrestImage(HogwartsHouse house) {
-    switch (house) {
-      case HogwartsHouse.gryffindor:
-        return 'assets/images/gryffindor_crest.png'; // Full Gryffindor crest
-      case HogwartsHouse.slytherin:
-        return 'assets/images/slytherin_crest.png'; // Full Slytherin crest
-      case HogwartsHouse.ravenclaw:
-        return 'assets/images/ravenclaw_crest.png'; // Full Ravenclaw crest
-      case HogwartsHouse.hufflepuff:
-        return 'assets/images/hufflepuff_crest.png'; // Full Hufflepuff crest
-      case HogwartsHouse.none:
-      default:
-        return 'assets/images/hogwarts_crest.png'; // Default Hogwarts crest
-    }
-  }
-
-  // Helper method to get a primary accent color based on the selected house
   Color _getAccentColor(HogwartsHouse house) {
     switch (house) {
       case HogwartsHouse.gryffindor:
-        return const Color(0xFFC50000); // Darker red for Gryffindor
+        return const Color(0xFFC50000);
       case HogwartsHouse.slytherin:
-        return const Color(0xFF1A472A); // Darker green for Slytherin
+        return const Color(0xFF1A472A);
       case HogwartsHouse.ravenclaw:
-        return const Color(0xFF222F5B); // Darker blue for Ravenclaw
+        return const Color(0xFF222F5B);
       case HogwartsHouse.hufflepuff:
-        return const Color(0xFFFFDB00); // Darker yellow/gold for Hufflepuff
+        return const Color(0xFFFFDB00);
       default:
-        return const Color(0xFF785834); // A dark brown for default
+        return const Color(0xFF785834);
     }
   }
 
-  // Helper method to get a secondary/light accent color (e.g., for icons/text)
   Color _getLightAccentColor(HogwartsHouse house) {
     switch (house) {
       case HogwartsHouse.gryffindor:
-        return const Color(0xFFEEBA30); // Gold
+        return const Color(0xFFEEBA30);
       case HogwartsHouse.slytherin:
-        return const Color(0xFFAAA5A5); // Silver
+        return const Color(0xFFAAA5A5);
       case HogwartsHouse.ravenclaw:
-        return const Color(0xFF946B0C); // Bronze
+        return const Color(0xFF1e82d4);
       case HogwartsHouse.hufflepuff:
-        return Colors.black; // Black or dark brown for Hufflepuff text on gold
+        return const Color(0xFFFFDB00);
       default:
         return Colors.white70;
     }
   }
 
+  String _getMainCrestImage(HogwartsHouse house) {
+    switch (house) {
+      case HogwartsHouse.gryffindor:
+        return AppImage.gryffindor;
+      case HogwartsHouse.slytherin:
+        return AppImage.slytherin;
+      case HogwartsHouse.ravenclaw:
+        return AppImage.ravenclaw;
+      case HogwartsHouse.hufflepuff:
+        return AppImage.hufflepuff;
+      case HogwartsHouse.none:
+      default:
+        return AppImage.hogwarts;
+    }
+  }
+
+  // Helper widget to build a single menu item
+  Widget _buildMenuItem(
+    BuildContext context,
+    String title,
+    String iconPath,
+    VoidCallback onTap,
+    Color iconColor,
+  ) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.5),
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(color: iconColor.withOpacity(0.3), width: 1),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(iconPath, height: 40, color: iconColor),
+            const SizedBox(height: 8),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: 'NotoSerif',
+                fontSize: 12,
+                color: iconColor,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final String backgroundImage = _getBackgroundImage(selectedHouse);
-    final String mainCrestImage = _getMainCrestImage(selectedHouse);
     final Color accentColor = _getAccentColor(selectedHouse);
     final Color lightAccentColor = _getLightAccentColor(selectedHouse);
+    final String mainCrestImage = _getMainCrestImage(selectedHouse);
     final String houseName = selectedHouse.toString().split('.').last;
 
     return Scaffold(
       body: Stack(
         children: [
-          // Background Image with Overlay
           Positioned.fill(
             child: ColorFiltered(
-              // Use ColorFiltered to apply the color filter
               colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.5), // Dark overlay for readability
+                Colors.black.withOpacity(0.5),
                 BlendMode.darken,
               ),
-              child: Image.asset(
-                backgroundImage,
-                fit: BoxFit.cover,
-                // colorBlendMode: BlendMode.darken, // This line is not needed here anymore
-                // color: Colors.black.withOpacity(0.5), // This line is not needed here anymore
-              ),
+              child: Image.asset(backgroundImage, fit: BoxFit.cover),
             ),
           ),
-          // Gradient Overlay to ensure top/bottom are darker
           Positioned.fill(
             child: Container(
               decoration: BoxDecoration(
@@ -230,9 +133,9 @@ class HomeScreen extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.black.withOpacity(0.7), // Dark at the top
-                    Colors.transparent, // Transparent in the middle
-                    Colors.black.withOpacity(0.7), // Dark at the bottom
+                    Colors.black.withOpacity(0.7),
+                    Colors.transparent,
+                    Colors.black.withOpacity(0.7),
                   ],
                   stops: const [0.0, 0.4, 1.0],
                 ),
@@ -242,7 +145,6 @@ class HomeScreen extends StatelessWidget {
           SafeArea(
             child: Column(
               children: [
-                // Top Bar with Back Button and Hogwarts Crest
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Row(
@@ -258,37 +160,28 @@ class HomeScreen extends StatelessWidget {
                           Navigator.of(context).pop();
                         },
                       ),
-                      // Replace with your actual small crest image
                       Image.asset(
-                        'assets/images/hogwarts_crest.png', // Or another suitable crest
+                        AppImage.hogwarts, // Using your specified crest image
                         height: 40,
-                        color: lightAccentColor, // Tint with house accent color
+                        color: lightAccentColor,
                       ),
                     ],
                   ),
                 ),
-                // Harry Potter Character Image (from design)
                 SizedBox(
-                  height:
-                      MediaQuery.of(context).size.height *
-                      0.35, // Adjust height as needed
+                  height: MediaQuery.of(context).size.height * 0.35,
                   child: Center(
                     child: ColorFiltered(
-                      // Apply ColorFiltered here as well
                       colorFilter: ColorFilter.mode(
                         Colors.white.withOpacity(
                           0.8,
-                        ), // Example: subtle desaturation
+                        ), // Using your specified opacity
                         BlendMode.modulate,
                       ),
-                      child: Image.asset(
-                        mainCrestImage, // <--- Change this line
-                        fit: BoxFit.contain,
-                      ),
+                      child: Image.asset(mainCrestImage, fit: BoxFit.contain),
                     ),
                   ),
                 ),
-                // Watch Series Button
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20.0,
@@ -296,33 +189,27 @@ class HomeScreen extends StatelessWidget {
                   ),
                   child: ElevatedButton.icon(
                     onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const SeriesScreen(),
-                        ),
-                      );
+                      // About
                     },
                     icon: const Icon(
-                      Icons.play_circle_fill,
+                      Icons.info_outline_rounded,
                       color: Colors.white,
                     ),
                     label: const Text(
-                      'Watch Series',
+                      'About',
                       style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'NotoSerif',
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: accentColor.withOpacity(
-                        0.8,
-                      ), // House color with transparency
+                      backgroundColor: accentColor.withOpacity(0.8),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                         side: BorderSide(
                           color: lightAccentColor.withOpacity(0.7),
                           width: 1,
-                        ), // Subtle border
+                        ),
                       ),
                       padding: const EdgeInsets.symmetric(
                         horizontal: 30,
@@ -332,7 +219,6 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                // Welcome Text
                 Text(
                   'Welcome to Wizarding School!',
                   style: TextStyle(
@@ -349,7 +235,6 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                // House Name
                 Text(
                   'Houses of Hogwarts School',
                   style: TextStyle(
@@ -360,127 +245,55 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                // Menu Grid
+
+                // --- PASSING COLORS TO CHARACTERS SCREEN HERE ---
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: GridView.count(
-                      crossAxisCount: 4, // 4 items per row as per design
-                      crossAxisSpacing: 15, // Spacing between columns
-                      mainAxisSpacing: 15, // Spacing between rows
-                      padding: const EdgeInsets.all(
-                        0,
-                      ), // No extra padding for the grid
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 15,
+                      padding: const EdgeInsets.all(0),
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
                       children: [
                         _buildMenuItem(
                           context,
-                          'Houses',
-                          'assets/images/cat.png', // Generic house icon
-                          () {
-                            // Go back to house selection
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                builder:
-                                    (context) => const HouseSelectionScreen(),
-                              ),
-                            );
-                          },
-                          lightAccentColor,
-                        ),
-                        _buildMenuItem(
-                          context,
-                          'Characters',
-                          'assets/images/cat.png', // Representing `CharacterModel`
+                          'Students',
+                          AppImage.charIcon,
                           () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder:
                                     (context) => CharactersScreen(
                                       selectedHouse: selectedHouse,
+                                      characterType: CharacterType.student,
+                                      accentColor:
+                                          accentColor, // <--- PASS ACCENT COLOR
+                                      lightAccentColor:
+                                          lightAccentColor, // <--- PASS LIGHT ACCENT COLOR
                                     ),
                               ),
                             );
                           },
                           lightAccentColor,
                         ),
-                        _buildMenuItem(
-                          context,
-                          'Symbols',
-                          'assets/images/cat.png', // Represents various symbols/emblems (House Crests, Patronus, etc.)
-                          () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const SymbolsScreen(),
-                              ),
-                            );
-                          },
-                          lightAccentColor,
-                        ),
-                        _buildMenuItem(
-                          context,
-                          'Spells',
-                          'assets/images/cat.png', // Represents spells (could be separate API or hardcoded)
-                          () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const SpellsScreen(),
-                              ),
-                            );
-                          },
-                          lightAccentColor,
-                        ),
-                        _buildMenuItem(
-                          context,
-                          'Wands',
-                          'assets/images/cat.png', // Represents `Wand` from CharacterModel or a dedicated wand API
-                          () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const WandsScreen(),
-                              ),
-                            );
-                          },
-                          lightAccentColor,
-                        ),
-                        _buildMenuItem(
-                          context,
-                          'Places',
-                          'assets/images/cat.png', // Represents locations in HP world
-                          () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const PlacesScreen(),
-                              ),
-                            );
-                          },
-                          lightAccentColor,
-                        ),
-                        _buildMenuItem(
-                          context,
-                          'Letters',
-                          'assets/images/cat.png', // Could be for letters like acceptance letter etc.
-                          () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const LettersScreen(),
-                              ),
-                            );
-                          },
-                          lightAccentColor,
-                        ),
-                        _buildMenuItem(
-                          context,
-                          'Send Letter',
-                          'assets/images/cat.png', // A hypothetical feature
-                          () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => const SendLetterScreen(),
-                              ),
-                            );
-                          },
-                          lightAccentColor,
-                        ),
+                        _buildMenuItem(context, 'Staff', AppImage.staffIcon, () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder:
+                                  (context) => CharactersScreen(
+                                    selectedHouse: selectedHouse,
+                                    characterType: CharacterType.staff,
+                                    accentColor:
+                                        accentColor, // <--- PASS ACCENT COLOR
+                                    lightAccentColor:
+                                        lightAccentColor, // <--- PASS LIGHT ACCENT COLOR
+                                  ),
+                            ),
+                          );
+                        }, lightAccentColor),
                       ],
                     ),
                   ),
@@ -489,51 +302,6 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  // Helper widget to build a single menu item
-  Widget _buildMenuItem(
-    BuildContext context,
-    String title,
-    String iconPath,
-    VoidCallback onTap,
-    Color iconColor,
-  ) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.black.withOpacity(
-            0.5,
-          ), // Dark translucent background for each icon
-          borderRadius: BorderRadius.circular(15), // Rounded corners
-          border: Border.all(
-            color: iconColor.withOpacity(0.3),
-            width: 1,
-          ), // Subtle border
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              iconPath,
-              height: 40, // Icon size
-              color: iconColor, // Tint icon with accent color
-            ),
-            const SizedBox(height: 8),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'NotoSerif',
-                fontSize: 12,
-                color: iconColor, // Text color
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

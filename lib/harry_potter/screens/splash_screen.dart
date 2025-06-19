@@ -1,10 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:ppkdjp_flutter/constant/app_image.dart';
-import 'dart:async';
 import 'package:ppkdjp_flutter/harry_potter/screens/house_selection_screen.dart'; // Required for Future.delayed
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -139,7 +140,8 @@ class _SplashScreenState extends State<SplashScreen>
                 width: screenWidth * 0.4, // Wand width as 40% of screen width
                 height: screenHeight,
                 child: Image.asset(
-                  'assets/images/wand.png', // Path to your wand image (without any built-in glow)
+                  AppImage
+                      .wand, // Path to your wand image (without any built-in glow)
                   fit: BoxFit.contain,
                 ),
               ),

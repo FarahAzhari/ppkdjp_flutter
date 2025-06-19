@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+
 import './harry_potter/screens/splash_screen.dart';
 // import 'package:ppkdjp_flutter/meet_dua.dart';
 // import 'package:ppkdjp_flutter/meet_dua_a.dart';
@@ -40,26 +41,26 @@ class MyApp extends StatelessWidget {
       //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       // ),
       // HARRY POTTER THEME
-      theme: ThemeData(
-        primarySwatch:
-            Colors.blueGrey, // You can define a custom MaterialColor here later
-        // Define your magical fonts globally here if you like
-        fontFamily: 'NotoSerif', // A general serif font for the app
-        scaffoldBackgroundColor: Color(
-          0xFFF5F5DC,
-        ), // Light parchment background for the whole app
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF1A237E), // Deep blue AppBar
-          foregroundColor: Color(0xFFFFD700), // Gold text
-          elevation: 0,
-          centerTitle: true,
-          titleTextStyle: TextStyle(
-            fontFamily: 'CinzelDecorative', // Title font
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+      // theme: ThemeData(
+      //   primarySwatch:
+      //       Colors.blueGrey, // You can define a custom MaterialColor here later
+      //   // Define your magical fonts globally here if you like
+      //   fontFamily: 'NotoSerif', // A general serif font for the app
+      //   scaffoldBackgroundColor: Color(
+      //     0xFFF5F5DC,
+      //   ), // Light parchment background for the whole app
+      //   appBarTheme: const AppBarTheme(
+      //     backgroundColor: Color(0xFF1A237E), // Deep blue AppBar
+      //     foregroundColor: Color(0xFFFFD700), // Gold text
+      //     elevation: 0,
+      //     centerTitle: true,
+      //     titleTextStyle: TextStyle(
+      //       fontFamily: 'CinzelDecorative', // Title font
+      //       fontSize: 22,
+      //       fontWeight: FontWeight.bold,
+      //     ),
+      //   ),
+      // ),
       // home: TugasSepuluhFlutter(),
     );
   }

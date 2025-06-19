@@ -32,4 +32,10 @@ class AppImage {
   static const String slytherin = "$asset/slytherin_crest.png";
   static const String hufflepuff = "$asset/hufflepuff_crest.png";
   static const String ravenclaw = "$asset/ravenclaw_crest.png";
+  static const String gryffindorBg = "$asset/gryffindor_bg.jpg";
+  static const String slytherinBg = "$asset/slytherin_bg.jpg";
+  static const String hufflepuffBg = "$asset/hufflepuff_bg.jpg";
+  static const String ravenclawBg = "$asset/ravenclaw_bg.jpg";
+  static const String charIcon = "$asset/character_icon.png";
+  static const String staffIcon = "$asset/staff_icon.png";
 }

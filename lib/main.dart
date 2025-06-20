@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-
-import './harry_potter/screens/splash_screen.dart';
+import 'package:ppkdjp_flutter/tugas_15/auth_check_screen.dart';
 // import 'package:ppkdjp_flutter/meet_dua.dart';
 // import 'package:ppkdjp_flutter/meet_dua_a.dart';
 // import 'package:ppkdjp_flutter/tugas_dua_flutter.dart';
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
         // ThankYouPage.id: (context) => ThankYouPage(name: '', domicile: ''),
         // LoginScreenApp.id: (context) => LoginScreenApp(),
         // RegisterScreenApp.id: (context) => RegisterScreenApp(),
-        '/': (context) => SplashScreen(),
+        '/': (context) => AuthCheckScreen(),
       },
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
